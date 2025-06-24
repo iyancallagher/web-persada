@@ -6,7 +6,7 @@ if (isset($_POST['loginbtn'])) {
     $password = $_POST['passwords']; // Jangan di-htmlspecialchars karena akan dibandingkan secara hash
 
     // Gunakan prepared statement untuk cegah SQL Injection
-    $stmt = $conn->prepare("SELECT * FROM pengguna WHERE username = ?");
+    $stmt = $conn->prepare("SELECT * FROM user WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();

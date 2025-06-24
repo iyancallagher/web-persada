@@ -18,7 +18,7 @@ if (isset($_POST['tambah_akun'])) {
     $new_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     // Periksa apakah email sudah digunakan
-    $query_check = "SELECT * FROM pengguna WHERE email = ?";
+    $query_check = "SELECT * FROM user WHERE email = ?";
     $stmt_check = $conn->prepare($query_check);
     $stmt_check->bind_param("s", $new_email);
     $stmt_check->execute();
@@ -28,7 +28,7 @@ if (isset($_POST['tambah_akun'])) {
         echo "<script>alert('Email sudah terdaftar!'); window.location.href = 'register.php';</script>";
     } else {
         // Simpan ke database
-        $query_insert = "INSERT INTO pengguna (nama, username, passwords, email, jabatan, perusahaan, no_hp) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $query_insert = "INSERT INTO user (nama, username, passwords, email, jabatan, perusahaan, no_hp) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt_insert = $conn->prepare($query_insert);
         $stmt_insert->bind_param("sssssss", $new_name, $new_username, $new_password, $new_email, $new_jabatan, $new_perusahaan, $new_no_hp);
 

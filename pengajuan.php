@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($success) {
             $last_id = mysqli_insert_id($conn);
-            $qr_url = "http://192.168.1.16/web-persada/lihat.php?id=$last_id";
+            $qr_url = "localhost/web-persada/lihat.php?id=$last_id";
 
             $tempQR = "qrcode/temp_qr_$last_id.png";
             QRcode::png($qr_url, $tempQR, QR_ECLEVEL_H, 10);
